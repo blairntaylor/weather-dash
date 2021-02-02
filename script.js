@@ -8,7 +8,8 @@ $(document).ready(function(){
     var humidity = document.getElementById("humidity");
     var windSpeed = document.getElementById("wind-speed");
     var uvIndex = document.getElementById("uv-index");
-    var history = document.getElementById("input-history");
+
+    
 
     //accessing open weather with API key
     var APIKey = "6c813c85e9ba5137a719bf680b83be65";
@@ -25,10 +26,19 @@ $(document).ready(function(){
 
     //run AJAX to call open weathermap
     function getWeather (cityName) {
+
+        //history and local storage
+        var history = JSON.parse(localStorage.getItem("input-history")) || [];
+        console.log(history)
+
+        // if (history.indexOf(searchValue) === -1) {
+        //     window.localStorage.setItem("history", JSON.stringify(history));
+        //   }
         
     $.ajax({
         url: "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=6c813c85e9ba5137a719bf680b83be65&units=imperial",
         method: "GET",
+        // success://passing in data on success history.indexOf
     })
     
     .then(function (response) {
@@ -47,8 +57,6 @@ $(document).ready(function(){
         forecast(cityName)
 
     });
-
-
     }
 
     function forecast (searchCity){
@@ -70,7 +78,7 @@ $(document).ready(function(){
                     var p = $("<p>").addClass("card-text").text("Humidity: " + response.list[i].main.humidity)
                     var p2 = $("<p>").addClass("card-text").text("Temperature: " + response.list[i].main.temp_max)
 
-                    column.append(card.append(body.append(date, img, p, p2)))
+                    column.append(card.prepend(body.append(date, img, p, p2)))
 
                     $("#forecast .row").append(column)
                 }
