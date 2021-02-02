@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"/>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header><h1>Weather Dashboard</h1></header>
+        <div class="dashboard">
+            <div class="col-4">
+                <div class="input-city">
+                    <div id="form-outline">
+                        <p class="search-header"><h5>Search for a city:</h5></p>
+                        <input id="search-input" type="search" id="form1" class="form-control" />
+                        <button id="search-button" type="button" class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div id="input-city-history">Austin</div>
+            </div>
+            <div class="col-8">
+                <div class="current-weather">
+                    <tr>
+                        <td><p id="city-name"><h2>City name</h2></p></td>
+                    </tr>
+                    <tr>
+                        <td><p id="temperature"><h4>Temperature</h4></p></td>
+                    </tr>
+                    <tr>
+                        <td><p id="humidity"><h4>Humidity</h4></p></td>
+                    </tr>
+                    <tr>
+                        <td><p id="wind-speed"><h4></h4>Wind Speed</h4></p></td>
+                    </tr>
+                    <tr>
+                        <td><p id="uv-index"><h4></h4>UV Index</h4></p></td>
+                    </tr>
+                </div>
+                <div class = "future-weather">
+                    <h3>5 Day Forecast:</h3>
+                    <div class="day1"></div>
+                    <div class="day2"></div>
+                    <div class="day3"></div>
+                    <div class="day4"></div>
+                    <div class="day5"></div>
+                </div>
+            </div>
+    </div>
+
+    
+</body>
+<script src="./assets/js/script.js"></script>
+</html>

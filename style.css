@@ -1,0 +1,49 @@
+* {
+  box-sizing: content-box;
+  width: 100%;
+}
+
+.dashboard {
+  margin-top: 0;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+header {
+  width: auto;
+  height: 100px;
+  background-color: rgb(63, 62, 62);
+}
+
+h1 {
+  color: white;
+  padding-top: 25px;
+  text-align: center;
+}
+
+.col-4 {
+  background-color: rgb(238, 236, 236);
+  border-color: gray;
+  height: 500px;
+  width: 40%;
+  float: left;
+}
+
+.col-8 {
+  background-color: rgb(238, 236, 236);
+  border-color: gray;
+  height: 500px;
+  width: 60%;
+  float: right;
+}
+
+#form-outline {
+  width: 60%;
+  padding-left: 15px;
+  padding-top: 10px;
+}
+
+#search-button {
+  width: 20px;
+  float: right;
+}
