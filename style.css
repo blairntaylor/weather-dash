@@ -5,7 +5,6 @@
 
 .dashboard {
   margin-top: 0;
-  margin-left: 25px;
   margin-right: 25px;
 }
 
@@ -23,27 +22,34 @@ h1 {
 
 .col-4 {
   background-color: rgb(238, 236, 236);
-  border-color: gray;
   height: 500px;
-  width: 40%;
   float: left;
+  margin-right: 25px;
 }
 
-.col-8 {
-  background-color: rgb(238, 236, 236);
-  border-color: gray;
+.col-6 {
   height: 500px;
-  width: 60%;
-  float: right;
+  float: left;
+  margin-top: 20px;
 }
 
-#form-outline {
-  width: 60%;
-  padding-left: 15px;
-  padding-top: 10px;
+.current-weather {
+  border-color: gray;
+  border-style: solid;
+  border-width: 0.25mm;
+  padding-left: 25px;
+  margin-bottom: 20px;
+}
+
+.input-city {
+  margin-left: 15px;
+  overflow: hidden;
 }
 
 #search-button {
   width: 20px;
-  float: right;
+}
+
+#search-input {
+  width: 60%;
 }
