@@ -46,6 +46,10 @@ h1 {
   overflow: hidden;
 }
 
+#city-name {
+  font-size: 36pt;
+}
+
 #search-button {
   width: 20px;
 }
