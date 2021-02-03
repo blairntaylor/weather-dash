@@ -18,12 +18,12 @@
                         <p class="search-header"><h5>Search for a city:</h5></p>
                         <!-- search city name here -->
                         <input id="search-input" type="search" id="form1" class="form-control" placeholder="Search city name"> 
-                        <label class="form-label" for="form1"></label>
+                        <button id="search-button" type="button" class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                        </button> 
                     </div>
                       <!-- search button here -->
-                    <button id="search-button" type="button" class="btn btn-primary">
-                    <i class="fas fa-search"></i>
-                    </button> 
+
                 </div>
                 <br>
                 <!-- list cities searched -->
@@ -53,8 +53,34 @@
                 </div>
                 <div class = "future-weather">
                     <h3>5 Day Forecast:</h3>
+                    <div id="forecast-cards">
+                        <div id="forecast1" class"card-body">
+                            <span class="card-title" id="forecast-day1"></span>
+                            <p class="card-text" id="forecast-temp1"></p>
+                            <p class="card-text" id="forecast-humid1"></p>
+                        </div>
+                        <div id="forecast2" class"card-body">
+                            <span class="card-title" id="forecast-day2"></span>
+                            <p class="card-text" id="forecast-temp2"></p>
+                            <p class="card-text" id="forecast-humid2"></p>
+                        </div>
+                        <div id="forecast3" class"card-body">
+                            <span class="card-title" id="forecast-day3"></span>
+                            <p class="card-text" id="forecast-temp3"></p>
+                            <p class="card-text" id="forecast-humid3"></p>
+                        </div>
+                        <div id="forecast4" class"card-body">
+                            <span class="card-title" id="forecast-day4"></span>
+                            <p class="card-text" id="forecast-temp4"></p>
+                            <p class="card-text" id="forecast-humid4"></p>
+                        </div>
+                        <div id="forecast5" class"card-body">
+                            <span class="card-title" id="forecast-day5"></span>
+                            <p class="card-text" id="forecast-temp5"></p>
+                            <p class="card-text" id="forecast-humid5"></p>
+                        </div>
+                    </div>
                 </div>
-                <div id="forecast" class="row"></div>
             </div>
     </div>
 

@@ -11,7 +11,7 @@ $(document).ready(function(){
     //history and local storage
     var history = JSON.parse(localStorage.getItem("search")) || [];
     console.log(history);
-    var weatherIcon = document.getElementById("#weather-icon");
+    // var weatherIcon = document.getElementById("#weather-icon");
 
     //accessing open weather with API key
     var APIKey = "6c813c85e9ba5137a719bf680b83be65";
@@ -36,7 +36,7 @@ $(document).ready(function(){
         $.ajax({
             url: "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=6c813c85e9ba5137a719bf680b83be65&units=imperial",
             method: "GET",
-            // success://passing in data on success history.indexOf
+
         })
         .then(function (response) {
             // Log the queryURL
@@ -50,26 +50,34 @@ $(document).ready(function(){
             $("#uvindex").text(response.main.humidity);
 
             // cannot get weather icon to show
-            $.ajax({
-                url: "https://openweathermap.org/img/wn/" + weatherIcon + "@2x.png",
-                method: "GET",
-                //passing in data on success history.indexOf
-            })
-            .then(function (response){
-                // let weatherPic = response.data.weather[0].icon;
-                $("#weather-icon").attr("src","https://openweathermap.org/img/wn/" + weatherIcon + "@2x.png");
-                $("#weather-icon").attr("alt",response.data.weather[0].description);
-            });
+            var weatherIcon = $("<img>");
+            // weatherIcon.attr("src", "http://openweathermap.org/img/wn/10d@2x.png"); //works but very large img
+            weatherIcon.attr("src", "http://openweathermap.org/img/wn/10d" + response.data.weather[0].icon + "@2x.png");
+            $("#weather-icon").empty();
+            $("#weather-icon").append(weatherIcon);
 
-            //uv index with color index does not work
-            var lat = response.coord.lat;
-            var lon = response.coord.lon;
-            let UVQueryURL = "https://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey + "&cnt=1";
-            axios.get(UVQueryURL)
-            .then(function(response){
-                $("#uv-index").attr("class", "badge badge-danger");
-                $("#uv-index").text(response.data[0].val());
-                uvIndex.append(uvIndex);
+            //uv index with color index does not work without using longitutde and latitude coordinates
+            latitude = weather.coord.lat;
+            longitude = weather.coord.lon;
+
+            var UVQueryURL = "https://api.openweathermap.org/data/2.5/weather?q=&appid=6c813c85e9ba5137a719bf680b83be65&units=imperial" + "&lat=" + latitude + "&lon=" + longitude; 
+
+            $.ajax({
+                url: UVQueryURL,
+                method: "GET",
+                // Store all of the retrieved data
+              })
+              .then(function(uvIndex) {
+                console.log(uvIndex);
+        
+                var uvIndexColor = $("<button>");
+                uvIndexColor.addClass("btn btn-danger");
+
+            // axios.get(UVQueryURL)
+            // .then(function(response){
+            //     $("#uv-index").attr("class", "badge badge-danger");
+            //     $("#uv-index").text(response.data[0].val());
+            //     uvIndex.append(uvIndex);
             })
 
             forecast(cityName);
@@ -77,16 +85,23 @@ $(document).ready(function(){
 
     }
     //cannot get forecast to show
-    function forecast(searchCity) {
+    function forecast(response) {
 
         $.ajax({
-            url: "https://api.openweathermap.org/data/2.5/forecast?q=" + searchCity + "&appid=6c813c85e9ba5137a719bf680b83be65&units=imperial",
+            url: "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=6c813c85e9ba5137a719bf680b83be65&units=imperial",
             method: "GET",
         })
         .then(function (response) {
             console.log("forecast", response)
+            // will console.log the 5 days but not put append them into the the div
             for (var i =0; i > response.list.length; i++){
                 if (response.list[i].dt_txt.indexOf("15:00:00")!==-1){
+
+
+
+
+
+
                     var column = $("<div>").addClass("col-md-2")
                     var card = $("<div>").addClass("card bg-primary text-white")
                     var body = $("<div>").addClass("card-body p-2")
@@ -99,10 +114,6 @@ $(document).ready(function(){
                 }
             }
         });
-
-    }
-    forecast();
-    if (searchInput.length > 0) {
-        getWeather(searchInput[searchInputy.length - 1]);
+        forecast();
     }
 });
